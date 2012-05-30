@@ -93,6 +93,16 @@
 			<artifactId>jbossws-native-client</artifactId>
 			<version>3.2.2.GA</version>
 			<scope>provided</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.jvnet.staxex</groupId>
+					<artifactId>stax-ex</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>wscommons-policy</groupId>
+					<artifactId>policy</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<!-- ***** test ***** -->
 		<dependency>
