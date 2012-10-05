@@ -5,3 +5,4 @@ Currently available larvae are:
 * larva-cxf
 * larva-jaxb
 * larva-jbossws
+* larva-smooks

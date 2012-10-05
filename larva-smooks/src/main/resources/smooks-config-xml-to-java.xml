@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:core="http://www.milyn.org/xsd/smooks/smooks-core-1.3.xsd"
+  xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+
+  <core:filterSettings type="SAX" />
+
+  <jb:bean beanId="aaa" class="larvae.smooks.model.Aaa" createOnElement="aaa">
+    <jb:wiring property="bbb" beanIdRef="bbb" />
+  </jb:bean>
+
+  <jb:bean beanId="bbb" class="larvae.smooks.model.Bbb" createOnElement="bbb">
+    <jb:wiring property="ccc" beanIdRef="ccc" />
+  </jb:bean>
+
+  <jb:bean beanId="ccc" class="larvae.smooks.model.Ccc" createOnElement="ccc">
+    <jb:value property="value" data="ccc/value" />
+  </jb:bean>
+
+</smooks-resource-list>
