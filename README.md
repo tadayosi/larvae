@@ -1,4 +1,4 @@
-h1. Larvae: Cradle for prototype projects
+# Larvae: Cradle for prototype projects
 
 Currently available larvae are:
 
