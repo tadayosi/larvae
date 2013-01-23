@@ -7,3 +7,4 @@ Currently available larvae are:
 * larva-jaxb
 * larva-jbossws
 * larva-smooks
+* larva-webapp
