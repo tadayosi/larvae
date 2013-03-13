@@ -19,6 +19,10 @@ public class XmlToXml {
     return transform("smooks/xml-to-xml-ftl.xml", inputXml);
   }
 
+  public String transformVisitor(String inputXml) throws Exception {
+    return transform("smooks/xml-to-xml-visitor.xml", inputXml);
+  }
+
   private String transform(String config, String inputXml) throws IOException, SAXException {
     Smooks smooks = new Smooks(config);
     try {

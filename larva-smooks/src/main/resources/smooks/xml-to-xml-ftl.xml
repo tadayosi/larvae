@@ -7,7 +7,7 @@
   </resource-config>
 
   <ftl:freemarker applyOnElement="ccc">
-    <ftl:template><!--<ccc value="${value}"></ccc>--></ftl:template>
+    <ftl:template><!--<ccc value="${value}" />--></ftl:template>
     <ftl:use>
       <ftl:inline directive="replace" />
     </ftl:use>
