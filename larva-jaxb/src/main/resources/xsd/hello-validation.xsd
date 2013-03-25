@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:tns="http://larvae/jaxb/hello" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  targetNamespace="http://larvae/jaxb/hello" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="2.0">
+  <xsd:annotation>
+    <xsd:appinfo>
+      <jaxb:globalBindings fixedAttributeAsConstantProperty="true" />
+    </xsd:appinfo>
+  </xsd:annotation>
+  <xsd:element name="helloValidation">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="name" type="xsd:string" fixed="JAXB" />
+      </xsd:sequence>
+      <xsd:attribute name="nameAttribute" type="xsd:string" fixed="JAXB" />
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="helloValidationResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="message" type="xsd:string" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

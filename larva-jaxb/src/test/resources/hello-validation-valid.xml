@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hello:helloValidation xmlns:hello="http://larvae/jaxb/hello">
+  <name>JAXB</name>
+</hello:helloValidation>

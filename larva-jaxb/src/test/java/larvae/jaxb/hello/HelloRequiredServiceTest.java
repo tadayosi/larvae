@@ -15,7 +15,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.w3c.dom.Document;
 
-public class HelloAnyServiceTest {
+public class HelloRequiredServiceTest {
   private DocumentBuilder documentBuilder = null;
   private XPath           xPath           = null;
 
@@ -27,9 +27,22 @@ public class HelloAnyServiceTest {
 
   @Test
   public void say() {
-    IHelloService target = new HelloAnyService();
-    String responseXml = target.say(ClassLoader.getSystemResourceAsStream("hello-any.xml"));
-    assertThat(extract(responseXml, "/helloAnyResponse/message/text()"), is("Hello, JAXB!"));
+    HelloRequiredService target = new HelloRequiredService(true);
+    String responseXml = target.say(ClassLoader.getSystemResourceAsStream("hello-required.xml"));
+    assertThat(extract(responseXml, "/helloRequiredResponse/message/text()"), is("Hello, JAXB!"));
+  }
+
+  @Test
+  public void say_null() {
+    HelloRequiredService target = new HelloRequiredService(false);
+    String responseXml = target.say(ClassLoader.getSystemResourceAsStream("hello-required-null.xml"));
+    assertThat(extract(responseXml, "/helloRequiredResponse/message/text()"), is("Hello, null!"));
+  }
+
+  @Test(expected = RuntimeException.class)
+  public void say_validateNull() {
+    HelloRequiredService target = new HelloRequiredService(true);
+    target.say(ClassLoader.getSystemResourceAsStream("hello-required-null.xml"));
   }
 
   private String extract(String responseXml, String expression) {
@@ -39,5 +52,6 @@ public class HelloAnyServiceTest {
     } catch (Exception e) {
       throw new RuntimeException(e);
     }
+
   }
 }

@@ -23,6 +23,7 @@
           <source>1.6</source>
           <target>1.6</target>
           <encoding>${project.build.sourceEncoding}</encoding>
+          <compilerargument>-Djava.endorsed.dirs="${project.build.directory}/endorsed"</compilerargument>
         </configuration>
       </plugin>
       <plugin>
@@ -62,13 +63,53 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>2.6</version>
+        <executions>
+          <execution>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>copy</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>javax.xml.bind</groupId>
+                  <artifactId>jaxb-api</artifactId>
+                  <version>2.2.5</version>
+                </artifactItem>
+              </artifactItems>
+              <outputDirectory>${project.build.directory}/endorsed</outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 
   <dependencies>
+    <!-- ***** JAXB ***** -->
+    <dependency>
+      <groupId>javax.xml.bind</groupId>
+      <artifactId>jaxb-api</artifactId>
+      <version>2.2.5</version>
+    </dependency>
+    <dependency>
+      <groupId>com.sun.xml.bind</groupId>
+      <artifactId>jaxb-impl</artifactId>
+      <version>2.2.5</version>
+    </dependency>
+    <!-- ***** utilities ***** -->
     <dependency>
       <groupId>commons-lang</groupId>
       <artifactId>commons-lang</artifactId>
+      <version>2.4</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
       <version>2.4</version>
     </dependency>
     <!-- ***** logging ***** -->
@@ -91,4 +132,12 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
+  <repositories>
+    <repository>
+      <id>java.net-Public</id>
+      <name>Maven Java Net Snapshots and Releases</name>
+      <url>https://maven.java.net/content/groups/public/</url>
+    </repository>
+  </repositories>
 </project>

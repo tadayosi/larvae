@@ -27,7 +27,7 @@ public class HelloServiceTest {
 
   @Test
   public void say() {
-    HelloService target = new HelloService();
+    IHelloService target = new HelloService();
     String responseXml = target.say(ClassLoader.getSystemResourceAsStream("hello.xml"));
     assertThat(extract(responseXml, "/helloResponse/message/text()"), is("Hello, JAXB!"));
   }

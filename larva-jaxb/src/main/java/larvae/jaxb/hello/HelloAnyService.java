@@ -14,9 +14,10 @@ import org.slf4j.LoggerFactory;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
-public class HelloAnyService {
+public class HelloAnyService implements IHelloService {
   private static final Logger LOGGER        = LoggerFactory.getLogger(HelloAnyService.class);
-  private JaxbHelper          jaxbHelper    = new JaxbHelper(ObjectFactory.class.getPackage().getName());
+  private JaxbHelper          jaxbHelper    = new JaxbHelper(ObjectFactory.class.getPackage().getName(),
+                                                "xsd/hello-any.xsd");
   private ObjectFactory       objectFactory = new ObjectFactory();
 
   public String say(InputStream helloXml) {
@@ -37,13 +38,11 @@ public class HelloAnyService {
   }
 
   private static Object createMessage(Object any) {
-    if (!(any instanceof Element)) {
-      return String.format("Hello, %s!", any);
-    }
+    if (!(any instanceof Element)) { return String.format("Hello, %s!", any); }
     Element name = Element.class.cast(any);
     Node text = name.getFirstChild();
     text.setNodeValue(String.format("Hello, %s!", text.getNodeValue()));
-    Element message = name.getOwnerDocument().createElement("message");
+    Element message = name.getOwnerDocument().createElementNS("http://larvae/jaxb/other", "message");
     message.appendChild(text);
     return message;
   }
