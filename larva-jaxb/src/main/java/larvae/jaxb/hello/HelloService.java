@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
 
 public class HelloService implements IHelloService {
   private static final Logger LOGGER        = LoggerFactory.getLogger(HelloService.class);
-  private JaxbHelper          jaxbHelper    = new JaxbHelper(ObjectFactory.class.getPackage().getName(), "xsd/hello.xsd");
+  private JaxbHelper          jaxbHelper    = new JaxbHelper(ObjectFactory.class.getPackage().getName(), "xsd/hello/hello.xsd");
   private ObjectFactory       objectFactory = new ObjectFactory();
 
   public String say(InputStream helloXml) {

@@ -17,7 +17,7 @@ import org.w3c.dom.Node;
 public class HelloAnyService implements IHelloService {
   private static final Logger LOGGER        = LoggerFactory.getLogger(HelloAnyService.class);
   private JaxbHelper          jaxbHelper    = new JaxbHelper(ObjectFactory.class.getPackage().getName(),
-                                                "xsd/hello-any.xsd");
+                                                "xsd/hello/any.xsd");
   private ObjectFactory       objectFactory = new ObjectFactory();
 
   public String say(InputStream helloXml) {

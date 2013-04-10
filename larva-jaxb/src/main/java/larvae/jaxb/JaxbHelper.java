@@ -15,7 +15,7 @@ import javax.xml.validation.SchemaFactory;
 import org.xml.sax.SAXException;
 
 public class JaxbHelper {
-  private JAXBContext  context;
+
   private Unmarshaller unmarshaller;
   private Marshaller   marshaller;
 
@@ -25,16 +25,32 @@ public class JaxbHelper {
 
   public JaxbHelper(String contextPath, String schemaLocation, boolean validate) {
     try {
-      this.context = JAXBContext.newInstance(contextPath);
-      this.unmarshaller = context.createUnmarshaller();
-      this.marshaller = context.createMarshaller();
-      if (validate) {
-        Schema schema = readSchema(schemaLocation);
-        unmarshaller.setSchema(schema);
-        marshaller.setSchema(schema);
-      }
+      init(JAXBContext.newInstance(contextPath), schemaLocation, validate);
     } catch (Exception e) {
       throw new RuntimeException(e);
+    }
+  }
+
+  public JaxbHelper(Class<?>[] modelClasses, String schemaLocation) {
+    this(modelClasses, schemaLocation, true);
+  }
+
+  public JaxbHelper(Class<?>[] modelClasses, String schemaLocation, boolean validate) {
+    try {
+      init(JAXBContext.newInstance(modelClasses), schemaLocation, validate);
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  public void init(JAXBContext context, String schemaLocation, boolean validate) throws JAXBException, SAXException {
+    unmarshaller = context.createUnmarshaller();
+    marshaller = context.createMarshaller();
+    marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+    if (validate) {
+      Schema schema = readSchema(schemaLocation);
+      unmarshaller.setSchema(schema);
+      marshaller.setSchema(schema);
     }
   }
 

@@ -14,7 +14,8 @@ import org.slf4j.LoggerFactory;
 
 public class HelloValidationService implements IHelloService {
   private static final Logger LOGGER        = LoggerFactory.getLogger(HelloValidationService.class);
-  private JaxbHelper          jaxbHelper    = new JaxbHelper(ObjectFactory.class.getPackage().getName(), "xsd/hello-validation.xsd");
+  private JaxbHelper          jaxbHelper    = new JaxbHelper(ObjectFactory.class.getPackage().getName(),
+                                                "xsd/hello/validation.xsd");
   private ObjectFactory       objectFactory = new ObjectFactory();
 
   public String say(InputStream helloXml) {

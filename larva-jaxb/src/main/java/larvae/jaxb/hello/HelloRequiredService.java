@@ -18,7 +18,7 @@ public class HelloRequiredService implements IHelloService {
   private ObjectFactory       objectFactory = new ObjectFactory();
 
   public HelloRequiredService(boolean validate) {
-    jaxbHelper = new JaxbHelper(ObjectFactory.class.getPackage().getName(), "xsd/hello-required.xsd", validate);
+    jaxbHelper = new JaxbHelper(ObjectFactory.class.getPackage().getName(), "xsd/hello/required.xsd", validate);
   }
 
   public String say(InputStream helloXml) {
