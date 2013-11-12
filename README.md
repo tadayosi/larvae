@@ -6,6 +6,7 @@ Currently available larvae are:
 * larva-aspectj
 * larva-cdi
 * larva-cxf
+* larva-gatling
 * larva-jaxb
 * larva-jbossws
 * larva-smooks

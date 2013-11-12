@@ -1,0 +1,38 @@
+apply plugin: 'scala'
+apply plugin: 'jetty'
+
+repositories {
+    mavenCentral()
+    maven { url 'http://repository.excilys.com/content/groups/public' }
+}
+
+dependencies {
+    compile 'org.scala-lang:scala-library:2.10.3'
+    testCompile 'io.gatling.highcharts:gatling-charts-highcharts:2.0.0-M3'
+}
+
+task gatling(dependsOn: 'compileTestScala') << {
+    jettyRun.daemon = true
+    jettyRun.execute()
+    
+    sourceSets.test.output.classesDir.eachFileRecurse { file ->
+        if (!file.isFile()) return;
+        
+        def scenarioClass = (file.getPath() - (sourceSets.test.output.classesDir.getPath() + File.separator) - '.class')
+                .replace(File.separator, '.')
+        
+        javaexec {
+            main = 'io.gatling.app.Gatling'
+            classpath = sourceSets.test.output + sourceSets.test.runtimeClasspath
+            args '-sbf', sourceSets.test.output.classesDir,
+                    '-s', scenarioClass,
+                    '-rf', 'build/reports/gatling'
+        }
+    }
+    
+    jettyStop.execute()
+}
+
+// jetty
+stopPort = 9451
+stopKey = 'stop'
