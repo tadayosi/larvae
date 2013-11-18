@@ -8,6 +8,7 @@ Currently available larvae are:
 * larva-cxf
 * larva-gatling
 * larva-jaxb
+* larva-jboss-mgmt
 * larva-jbossws
 * larva-smooks
 * larva-webapp
