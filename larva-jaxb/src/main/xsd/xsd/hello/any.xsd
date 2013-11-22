@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns:tns="http://larvae/jaxb/hello" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-  targetNamespace="http://larvae/jaxb/hello">
+<xsd:schema xmlns:tns="http://larvae/jaxb/hello/model" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  targetNamespace="http://larvae/jaxb/hello/model">
   <xsd:element name="helloAny">
     <xsd:complexType>
       <xsd:sequence>

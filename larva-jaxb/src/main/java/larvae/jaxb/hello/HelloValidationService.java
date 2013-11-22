@@ -3,9 +3,9 @@ package larvae.jaxb.hello;
 import java.io.InputStream;
 
 import larvae.jaxb.JaxbHelper;
-import larvae.jaxb.hello.generated.HelloValidation;
-import larvae.jaxb.hello.generated.HelloValidationResponse;
-import larvae.jaxb.hello.generated.ObjectFactory;
+import larvae.jaxb.hello.model.HelloValidation;
+import larvae.jaxb.hello.model.HelloValidationResponse;
+import larvae.jaxb.hello.model.ObjectFactory;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;

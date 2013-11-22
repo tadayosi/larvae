@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:tns="http://larvae/jaxb/hello/model" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  targetNamespace="http://larvae/jaxb/hello/model">
+  <xsd:element name="helloRequired">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="name" type="xsd:string" minOccurs="1" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="helloRequiredResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="message" type="xsd:string" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<hello:helloValidation xmlns:hello="http://larvae/jaxb/hello">
+<hello:helloValidation xmlns:hello="http://larvae/jaxb/hello/model">
   <name>XXX</name>
 </hello:helloValidation>

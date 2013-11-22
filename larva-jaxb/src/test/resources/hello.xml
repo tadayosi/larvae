@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<hello:hello xmlns:hello="http://larvae/jaxb/hello">
+<hello:hello xmlns:hello="http://larvae/jaxb/hello/model">
   <name>JAXB</name>
 </hello:hello>
