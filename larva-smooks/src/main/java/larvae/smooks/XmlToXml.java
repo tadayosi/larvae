@@ -11,28 +11,28 @@ import org.xml.sax.SAXException;
 
 public class XmlToXml {
 
-  public String transformXslt(String inputXml) throws Exception {
-    return transform("smooks/xml-to-xml-xsl.xml", inputXml);
-  }
-
-  public String transformFreeMarker(String inputXml) throws Exception {
-    return transform("smooks/xml-to-xml-ftl.xml", inputXml);
-  }
-
-  public String transformVisitor(String inputXml) throws Exception {
-    return transform("smooks/xml-to-xml-visitor.xml", inputXml);
-  }
-
-  private String transform(String config, String inputXml) throws IOException, SAXException {
-    Smooks smooks = new Smooks(config);
-    try {
-      Source source = new StreamSource(ClassLoader.getSystemResourceAsStream(inputXml));
-      StringResult result = new StringResult();
-      smooks.filterSource(source, result);
-      return result.getResult();
-    } finally {
-      smooks.close();
+    public String transformXslt(String inputXml) throws Exception {
+        return transform("smooks/xml-to-xml-xsl.xml", inputXml);
     }
-  }
+
+    public String transformFreeMarker(String inputXml) throws Exception {
+        return transform("smooks/xml-to-xml-ftl.xml", inputXml);
+    }
+
+    public String transformVisitor(String inputXml) throws Exception {
+        return transform("smooks/xml-to-xml-visitor.xml", inputXml);
+    }
+
+    private String transform(String config, String inputXml) throws IOException, SAXException {
+        Smooks smooks = new Smooks(config);
+        try {
+            Source source = new StreamSource(ClassLoader.getSystemResourceAsStream(inputXml));
+            StringResult result = new StringResult();
+            smooks.filterSource(source, result);
+            return result.getResult();
+        } finally {
+            smooks.close();
+        }
+    }
 
 }

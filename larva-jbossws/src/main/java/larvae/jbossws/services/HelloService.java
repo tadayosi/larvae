@@ -5,8 +5,8 @@ import javax.jws.WebService;
 
 @WebService
 public class HelloService {
-  @WebMethod
-  public String hello(String name) {
-    return String.format("Hello, %s!", name);
-  }
+    @WebMethod
+    public String hello(String name) {
+        return String.format("Hello, %s!", name);
+    }
 }

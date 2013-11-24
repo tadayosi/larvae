@@ -12,20 +12,20 @@ import larvae.jaxb.pojo.model.Person;
 
 public class ObjectToXml {
 
-  private static final QName NS_PERSON = new QName("http://larvae/jaxb/pojo", "person");
+    private static final QName NS_PERSON = new QName("http://larvae/jaxb/pojo", "person");
 
-  private Marshaller         marshaller;
+    private Marshaller marshaller;
 
-  public ObjectToXml() throws JAXBException {
-    JAXBContext context = JAXBContext.newInstance(Person.class);
-    marshaller = context.createMarshaller();
-    marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-  }
+    public ObjectToXml() throws JAXBException {
+        JAXBContext context = JAXBContext.newInstance(Person.class);
+        marshaller = context.createMarshaller();
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+    }
 
-  public String convert(Person person) throws JAXBException {
-    ByteArrayOutputStream xml = new ByteArrayOutputStream();
-    marshaller.marshal(new JAXBElement<Person>(NS_PERSON, Person.class, person), xml);
-    return xml.toString();
-  }
+    public String convert(Person person) throws JAXBException {
+        ByteArrayOutputStream xml = new ByteArrayOutputStream();
+        marshaller.marshal(new JAXBElement<Person>(NS_PERSON, Person.class, person), xml);
+        return xml.toString();
+    }
 
 }

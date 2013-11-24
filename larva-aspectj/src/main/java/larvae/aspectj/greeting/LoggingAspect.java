@@ -11,22 +11,22 @@ import org.slf4j.LoggerFactory;
 
 @Aspect
 public class LoggingAspect {
-  private static final Logger LOGGER = LoggerFactory.getLogger(LoggingAspect.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(LoggingAspect.class);
 
-  @Before("call(* larvae.aspectj.greeting.*.hello(..))")
-  public void beforeHello(JoinPoint thisJoinPoint) {
-    LOGGER.info("BEFORE: {}", thisJoinPoint.getSignature());
-  }
+    @Before("call(* larvae.aspectj.greeting.*.hello(..))")
+    public void beforeHello(JoinPoint thisJoinPoint) {
+        LOGGER.info("BEFORE: {}", thisJoinPoint.getSignature());
+    }
 
-  @After("call(* larvae.aspectj.greeting.*.hello(..))")
-  public void afterHello(JoinPoint thisJoinPoint) {
-    LOGGER.info("AFTER: {}", thisJoinPoint.getSignature());
-  }
+    @After("call(* larvae.aspectj.greeting.*.hello(..))")
+    public void afterHello(JoinPoint thisJoinPoint) {
+        LOGGER.info("AFTER: {}", thisJoinPoint.getSignature());
+    }
 
-  @Around("call(@larvae.aspectj.greeting.Logging * *(..))")
-  public Object aroundLogging(ProceedingJoinPoint thisJoinPoint) throws Throwable {
-    LOGGER.info("LOGGING: {}", thisJoinPoint.getSignature());
-    return thisJoinPoint.proceed();
-  }
+    @Around("call(@larvae.aspectj.greeting.Logging * *(..))")
+    public Object aroundLogging(ProceedingJoinPoint thisJoinPoint) throws Throwable {
+        LOGGER.info("LOGGING: {}", thisJoinPoint.getSignature());
+        return thisJoinPoint.proceed();
+    }
 
 }

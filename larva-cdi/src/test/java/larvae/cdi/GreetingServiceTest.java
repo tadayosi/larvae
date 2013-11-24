@@ -9,17 +9,17 @@ import org.junit.Test;
 
 public class GreetingServiceTest {
 
-  @Test
-  public void hello_goodbye() {
-    Weld weld = new Weld();
-    try {
-      WeldContainer container = weld.initialize();
-      GreetingService service = container.instance().select(GreetingService.class).get();
-      assertThat(service.hello(getClass().getSimpleName()), is(equalTo("Hello, GreetingServiceTest!")));
-      assertThat(service.goodbye(getClass().getSimpleName()), is(equalTo("Goodbye, GreetingServiceTest!")));
-    } finally {
-      weld.shutdown();
+    @Test
+    public void hello_goodbye() {
+        Weld weld = new Weld();
+        try {
+            WeldContainer container = weld.initialize();
+            GreetingService service = container.instance().select(GreetingService.class).get();
+            assertThat(service.hello(getClass().getSimpleName()), is(equalTo("Hello, GreetingServiceTest!")));
+            assertThat(service.goodbye(getClass().getSimpleName()), is(equalTo("Goodbye, GreetingServiceTest!")));
+        } finally {
+            weld.shutdown();
+        }
     }
-  }
 
 }

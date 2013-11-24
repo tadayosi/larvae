@@ -9,32 +9,32 @@ import larvae.jaxb.adapter.StringToXSIntAdapter;
 @XmlRootElement
 public class Data {
 
-  private Integer i;
-  private String  s;
+    private Integer i;
+    private String s;
 
-  public Data() {}
+    public Data() {}
 
-  public Data(Integer i, String s) {
-    this.i = i;
-    this.s = s;
-  }
+    public Data(Integer i, String s) {
+        this.i = i;
+        this.s = s;
+    }
 
-  @XmlJavaTypeAdapter(IntegerToXSStringAdapter.class)
-  public Integer getI() {
-    return i;
-  }
+    @XmlJavaTypeAdapter(IntegerToXSStringAdapter.class)
+    public Integer getI() {
+        return i;
+    }
 
-  public void setI(Integer value) {
-    this.i = value;
-  }
+    public void setI(Integer value) {
+        this.i = value;
+    }
 
-  @XmlJavaTypeAdapter(StringToXSIntAdapter.class)
-  public String getS() {
-    return s;
-  }
+    @XmlJavaTypeAdapter(StringToXSIntAdapter.class)
+    public String getS() {
+        return s;
+    }
 
-  public void setS(String s) {
-    this.s = s;
-  }
+    public void setS(String s) {
+        this.s = s;
+    }
 
 }

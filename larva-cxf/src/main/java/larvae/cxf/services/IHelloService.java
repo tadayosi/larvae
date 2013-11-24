@@ -5,5 +5,5 @@ import javax.jws.WebService;
 
 @WebService
 public interface IHelloService {
-  String hello(@WebParam(name = "name") String name);
+    String hello(@WebParam(name = "name") String name);
 }

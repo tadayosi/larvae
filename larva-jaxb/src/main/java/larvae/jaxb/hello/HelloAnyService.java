@@ -15,35 +15,35 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
 public class HelloAnyService implements IHelloService {
-  private static final Logger LOGGER        = LoggerFactory.getLogger(HelloAnyService.class);
-  private JaxbHelper          jaxbHelper    = new JaxbHelper(ObjectFactory.class.getPackage().getName(),
-                                                "xsd/hello/any.xsd");
-  private ObjectFactory       objectFactory = new ObjectFactory();
+    private static final Logger LOGGER = LoggerFactory.getLogger(HelloAnyService.class);
+    private JaxbHelper jaxbHelper = new JaxbHelper(ObjectFactory.class.getPackage().getName(), "xsd/hello/any.xsd");
+    private ObjectFactory objectFactory = new ObjectFactory();
 
-  public String say(InputStream helloXml) {
-    HelloAny hello = jaxbHelper.unmarshal(helloXml);
-    LOGGER.info("Unmarshalled request:\n{}", ToStringBuilder.reflectionToString(hello, ToStringStyle.MULTI_LINE_STYLE));
-    HelloAnyResponse response = createResponse(hello.getAny());
-    LOGGER.info("Raw response:\n{}", ToStringBuilder.reflectionToString(response, ToStringStyle.MULTI_LINE_STYLE));
-    String responseXml = jaxbHelper.marshal(response);
-    LOGGER.info("Marshalled response:\n{}", responseXml);
-    return responseXml;
-  }
+    public String say(InputStream helloXml) {
+        HelloAny hello = jaxbHelper.unmarshal(helloXml);
+        LOGGER.info("Unmarshalled request:\n{}",
+                ToStringBuilder.reflectionToString(hello, ToStringStyle.MULTI_LINE_STYLE));
+        HelloAnyResponse response = createResponse(hello.getAny());
+        LOGGER.info("Raw response:\n{}", ToStringBuilder.reflectionToString(response, ToStringStyle.MULTI_LINE_STYLE));
+        String responseXml = jaxbHelper.marshal(response);
+        LOGGER.info("Marshalled response:\n{}", responseXml);
+        return responseXml;
+    }
 
-  private HelloAnyResponse createResponse(Object any) {
-    HelloAnyResponse response = objectFactory.createHelloAnyResponse();
-    Object message = createMessage(any);
-    response.setAny(message);
-    return response;
-  }
+    private HelloAnyResponse createResponse(Object any) {
+        HelloAnyResponse response = objectFactory.createHelloAnyResponse();
+        Object message = createMessage(any);
+        response.setAny(message);
+        return response;
+    }
 
-  private static Object createMessage(Object any) {
-    if (!(any instanceof Element)) { return String.format("Hello, %s!", any); }
-    Element name = Element.class.cast(any);
-    Node text = name.getFirstChild();
-    text.setNodeValue(String.format("Hello, %s!", text.getNodeValue()));
-    Element message = name.getOwnerDocument().createElementNS("http://larvae/jaxb/other", "message");
-    message.appendChild(text);
-    return message;
-  }
+    private static Object createMessage(Object any) {
+        if (!(any instanceof Element)) { return String.format("Hello, %s!", any); }
+        Element name = Element.class.cast(any);
+        Node text = name.getFirstChild();
+        text.setNodeValue(String.format("Hello, %s!", text.getNodeValue()));
+        Element message = name.getOwnerDocument().createElementNS("http://larvae/jaxb/other", "message");
+        message.appendChild(text);
+        return message;
+    }
 }
