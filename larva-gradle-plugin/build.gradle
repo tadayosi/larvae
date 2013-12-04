@@ -1,0 +1,25 @@
+apply plugin: "groovy"
+apply plugin: "maven"
+
+group = "larvae"
+version = "1.0-SNAPSHOT"
+
+repositories { mavenCentral() }
+
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+
+    // test
+    testCompile "junit:junit:4.11"
+    testCompile "org.hamcrest:hamcrest-library:1.3"
+}
+
+uploadArchives {
+    file("build/m2_repo").mkdir()
+    repositories {
+        mavenDeployer {
+            repository(url: uri("build/m2_repo"))
+        }
+    }
+}

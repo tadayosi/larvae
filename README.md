@@ -7,6 +7,7 @@ Currently available larvae are:
 * larva-cdi
 * larva-cxf
 * larva-gatling
+* larva-gradle-plugin
 * larva-jaxb
 * larva-jboss-mgmt
 * larva-jbossws

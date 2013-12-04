@@ -1,0 +1,7 @@
+buildscript {
+    repositories {
+        maven { url uri("../build/m2_repo") }
+    }
+    dependencies { classpath "larvae:larva-gradle-plugin:1.0-SNAPSHOT" }
+}
+apply plugin: "larva"
