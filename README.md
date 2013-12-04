@@ -10,5 +10,6 @@ Currently available larvae are:
 * larva-jaxb
 * larva-jboss-mgmt
 * larva-jbossws
+* larva-jpa
 * larva-smooks
 * larva-webapp
