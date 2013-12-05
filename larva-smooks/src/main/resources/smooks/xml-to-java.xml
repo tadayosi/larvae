@@ -9,6 +9,10 @@
     </jb:bean>
 
     <jb:bean beanId="bbb" class="larvae.smooks.model.Bbb" createOnElement="bbb">
+        <jb:value property="date" decoder="Date" data="bbb/@date">
+            <jb:decodeParam name="format">yyyy/MM/dd HH:mm:ss</jb:decodeParam>
+            <jb:decodeParam name="locale">ja_JP</jb:decodeParam>
+        </jb:value>
         <jb:wiring property="ccc" beanIdRef="ccc" />
     </jb:bean>
 

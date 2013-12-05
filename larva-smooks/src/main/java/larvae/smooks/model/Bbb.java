@@ -1,18 +1,18 @@
 package larvae.smooks.model;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-import org.apache.commons.lang.builder.ToStringStyle;
+import java.util.Date;
 
+import lombok.Data;
+
+import com.google.common.base.Objects;
+
+@Data
 public class Bbb {
+    private Date date;
     private Ccc ccc;
-    public Ccc getCcc() {
-        return ccc;
-    }
-    public void setCcc(Ccc ccc) {
-        this.ccc = ccc;
-    }
+
     @Override
     public String toString() {
-        return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
+        return Objects.toStringHelper(this).add("date", date).add("ccc", ccc).toString();
     }
 }

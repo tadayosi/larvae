@@ -1,25 +1,16 @@
 package larvae.smooks.model;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-import org.apache.commons.lang.builder.ToStringStyle;
+import lombok.Data;
 
+import com.google.common.base.Objects;
+
+@Data
 public class Ccc {
     private Type type;
     private String value;
-    public Type getType() {
-        return type;
-    }
-    public void setType(Type type) {
-        this.type = type;
-    }
-    public String getValue() {
-        return value;
-    }
-    public void setValue(String value) {
-        this.value = value;
-    }
+
     @Override
     public String toString() {
-        return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
+        return Objects.toStringHelper(this).add("type", type).add("value", value).toString();
     }
 }
